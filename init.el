@@ -56,6 +56,18 @@
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
 (global-set-key [(control z)] 'undo)
+
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+(global-set-key (kbd "C-M-d") 'duplicate-line)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
