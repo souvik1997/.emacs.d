@@ -1,13 +1,10 @@
 (setq ring-bell-function 'ignore)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 0.3))) ;; one line at a time
-    
-(setq mouse-wheel-progressive-speed 0.00000001) ;; don't accelerate scrolling
-    
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-    
-(setq scroll-step 1) ;; keyboard scroll one line at a time
 
-(global-linum-mode t)
+;; Mouse configuration
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 0.3))) ;; one line at a time
+(setq mouse-wheel-progressive-speed 0.00000001) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode 1)
@@ -19,13 +16,22 @@
 			       (scroll-up 1)))
   (xterm-mouse-mode t)
   (defun track-mouse (e))
-    (setq mouse-sel-mode t))
+  (setq mouse-sel-mode t))
+
+;; TRAMP mode
+(setq tramp-default-method "ssh")
+
+;; Line numbering
+(global-linum-mode t)
 (setq linum-format "%4d \u2502 ")
+
+;; Backups
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-;; Hookup emacs clipboard with mac system clipboard
+
+;; Hook up emacs clipboard with mac system clipboard
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
 
@@ -39,24 +45,68 @@
 (if (eq system-type 'darwin)
     (setq interprogram-paste-function 'copy-from-osx))
 
-(load "~/.emacs.d/elpa/auctex-11.89/auctex.el" nil t t)
-(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
-(require 'neotree)
-  (global-set-key (kbd "C-Q") 'neotree-toggle)
-;;(load "~/.emacs.d/elpa/auctex-11.89/preview-latex.el" nil t t)
+;; PATH, dired, and exec-path configuration
+;; Must be before package installation or certain commands like gzip won't be found
+(setq insert-directory-program "/usr/local/bin/gls")
+(setq dired-listing-switches "-aBhl --group-directories-first")
 (getenv "PATH")
  (setenv "PATH"
 (concat
- "/Library/TeX/texbin" ":" "/usr/local/bin" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin"
-
+ "/Library/TeX/texbin" ":" "/usr/local/bin/" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin"
 (getenv "PATH")))
+(add-to-list 'exec-path "/Library/TeX/texbin")
+(add-to-list 'exec-path  "/usr/local/bin")
+(add-to-list 'exec-path "/usr/local/MacGPG2/bin")
+(add-to-list 'exec-path "/usr/local/opt/coreutils/libexec/gnubin")
+
+;; Package-specific configuration
+;; Package archives
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
+(defvar required-packages
+  '(auctex
+    neotree
+    magit)
+  "List of packages that must be installed")
+(require 'cl)
+(defun packages-installed-p ()
+  (loop for p in required-packages
+	when (not (package-installed-p p)) do (return nil)
+	finally (return t)))
+(unless (packages-installed-p)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  (dolist (p required-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+
+
+;; AUCTeX
+;(load "auctex.el" nil t t)
+;(load "preview-latex.el" nil t t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
 (setq preview-gs-command "/usr/local/bin/gs")
+(setq LaTeX-item-indent 0)
+
+;; Neotree
+(require 'neotree)
+  (global-set-key (kbd "C-Q") 'neotree-toggle)
+
+
+
+
+;; Custom functions and keybindings
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
 (global-set-key [(control z)] 'undo)
-
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -68,6 +118,8 @@
 )
 (global-set-key (kbd "C-M-d") 'duplicate-line)
 
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -76,6 +128,7 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (tsdh-dark)))
+ '(inhibit-startup-screen t)
  '(semantic-mode t)
  '(send-mail-function (quote sendmail-send-it))
  '(user-mail-address "souvik1997@gmail.com"))
