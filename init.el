@@ -1,10 +1,10 @@
 (setq ring-bell-function 'ignore)
 
 ;; Mouse configuration
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 0.3))) ;; one line at a time
-(setq mouse-wheel-progressive-speed 0.00000001) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+;(setq mouse-wheel-scroll-amount '(1 ((shift) . 0.3))) ;; one line at a time
+;(setq mouse-wheel-progressive-speed 0.00000001) ;; don't accelerate scrolling
+;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;(setq scroll-step 1) ;; keyboard scroll one line at a time
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode 1)
@@ -69,7 +69,9 @@
 (defvar required-packages
   '(auctex
     neotree
-    magit)
+    magit
+    sublimity
+  )
   "List of packages that must be installed")
 (require 'cl)
 (defun packages-installed-p ()
@@ -98,6 +100,11 @@
 (require 'neotree)
   (global-set-key (kbd "C-Q") 'neotree-toggle)
 
+;; Sublimity
+(require 'sublimity)
+(require 'sublimity-scroll)
+(sublimity-mode 1)
+(setq sublimity-scroll-weight 1 sublimity-scroll-drift-length 15)
 
 
 
