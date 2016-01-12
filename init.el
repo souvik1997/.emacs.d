@@ -1,3 +1,28 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (tsdh-dark)))
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(semantic-mode t)
+ '(send-mail-function (quote sendmail-send-it))
+ '(user-mail-address "souvik1997@gmail.com"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+
 (setq ring-bell-function 'ignore)
 
 ;; Mouse configuration
@@ -25,9 +50,6 @@
 ;; Line numbering
 (global-linum-mode t)
 (setq linum-format "%4d \u2502 ")
-
-;; 2 space tabs
-(setq c-basic-offset 2)
 
 ;; Backups
 (setq backup-directory-alist
@@ -78,6 +100,7 @@
     smooth-scrolling
     js2-mode
     web-mode
+    smart-mode-line
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -120,15 +143,22 @@
 (setq-default js2-auto-indent-p t)
 (setq-default js2-bounce-indent-p t)
 (setq-default js2-basic-offset 2)
+(setq js2-mode-hook
+  '(lambda () (progn
+    (set-variable 'indent-tabs-mode nil))))
 
 ;; web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+;; smart-mode-line
+(sml/setup)
+
 ;; Miscellaneous configuration
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
+(setq show-paren-delay 0)
 (show-paren-mode 1)
 
 (toggle-scroll-bar -1)
@@ -149,24 +179,3 @@
   (yank)
 )
 (global-set-key (kbd "C-M-d") 'duplicate-line)
-
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (tsdh-dark)))
- '(inhibit-startup-screen t)
- '(semantic-mode t)
- '(send-mail-function (quote sendmail-send-it))
- '(user-mail-address "souvik1997@gmail.com"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
