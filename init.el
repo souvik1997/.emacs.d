@@ -26,6 +26,9 @@
 (global-linum-mode t)
 (setq linum-format "%4d \u2502 ")
 
+;; 2 space tabs
+(setq c-basic-offset 2)
+
 ;; Backups
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -74,6 +77,7 @@
     magit
     smooth-scrolling
     js2-mode
+    web-mode
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -101,7 +105,10 @@
 
 ;; Neotree
 (require 'neotree)
-  (global-set-key (kbd "C-Q") 'neotree-toggle)
+(setq neo-smart-open t)
+(global-set-key (kbd "C-Q") 'neotree-toggle)
+
+
 
 ;; Smooth-scrolling
 (require 'smooth-scrolling)
@@ -111,12 +118,20 @@
 (add-hook 'js2-mode-hook 'ac2-js2-mode)
 (setq-default js2-global-externs '("module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
 (setq-default js2-auto-indent-p t)
+(setq-default js2-bounce-indent-p t)
+(setq-default js2-basic-offset 2)
 
+;; web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; Miscellaneous configuration
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
+(show-paren-mode 1)
+
+(toggle-scroll-bar -1)
 
 ;; Custom functions and keybindings
 (global-unset-key (kbd "C-w"))
