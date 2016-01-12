@@ -1,10 +1,11 @@
 (setq ring-bell-function 'ignore)
 
 ;; Mouse configuration
-;(setq mouse-wheel-scroll-amount '(1 ((shift) . 0.3))) ;; one line at a time
-;(setq mouse-wheel-progressive-speed 0.00000001) ;; don't accelerate scrolling
-;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-;(setq scroll-step 1) ;; keyboard scroll one line at a time
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 0.6))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode 1)
@@ -70,7 +71,8 @@
   '(auctex
     neotree
     magit
-    sublimity
+    autopair
+    smooth-scrolling
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -100,13 +102,17 @@
 (require 'neotree)
   (global-set-key (kbd "C-Q") 'neotree-toggle)
 
-;; Sublimity
-(require 'sublimity)
-(require 'sublimity-scroll)
-(sublimity-mode 1)
-(setq sublimity-scroll-weight 1 sublimity-scroll-drift-length 15)
+;; Autopair
+(require 'autopair)
+(autopair-global-mode 1)
+(setq autopair-autowrap t)
 
+;; Smooth-scrolling
+(require 'smooth-scrolling)
 
+;; Miscellaneous configuration
+(require 'cc-mode)
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
 ;; Custom functions and keybindings
 (global-unset-key (kbd "C-w"))
