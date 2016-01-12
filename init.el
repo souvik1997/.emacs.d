@@ -60,6 +60,7 @@
 (add-to-list 'exec-path "/usr/local/MacGPG2/bin")
 (add-to-list 'exec-path "/usr/local/opt/coreutils/libexec/gnubin")
 
+
 ;; Package-specific configuration
 ;; Package archives
 (require 'package)
@@ -71,8 +72,8 @@
   '(auctex
     neotree
     magit
-    autopair
     smooth-scrolling
+    js2-mode
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -102,17 +103,20 @@
 (require 'neotree)
   (global-set-key (kbd "C-Q") 'neotree-toggle)
 
-;; Autopair
-(require 'autopair)
-(autopair-global-mode 1)
-(setq autopair-autowrap t)
-
 ;; Smooth-scrolling
 (require 'smooth-scrolling)
+
+;; js2-mode
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac2-js2-mode)
+(setq-default js2-global-externs '("module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
+(setq-default js2-auto-indent-p t)
+
 
 ;; Miscellaneous configuration
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+(electric-pair-mode 1)
 
 ;; Custom functions and keybindings
 (global-unset-key (kbd "C-w"))
