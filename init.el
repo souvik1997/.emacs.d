@@ -26,7 +26,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; Mouse configuration
-(setq mouse-wheel-scroll-amount '(2 ((shift) . 0.6))) ;; one line at a time
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6))) 
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
@@ -160,7 +160,7 @@
 (electric-pair-mode 1)
 (setq show-paren-delay 0)
 (show-paren-mode 1)
-
+(setq mac-option-modifier 'meta)
 (toggle-scroll-bar -1)
 
 ;; Custom functions and keybindings
