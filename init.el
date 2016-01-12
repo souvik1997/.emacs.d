@@ -101,6 +101,7 @@
     js2-mode
     web-mode
     smart-mode-line
+    dired+
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -154,6 +155,11 @@
 ;; smart-mode-line
 (sml/setup)
 
+;; dired+
+(require 'dired+)
+(diredp-toggle-find-file-reuse-dir 1)
+
+
 ;; Miscellaneous configuration
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
@@ -161,7 +167,11 @@
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 (setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+(setq mac-pass-command-to-system nil)
 (toggle-scroll-bar -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; Custom functions and keybindings
 (global-unset-key (kbd "C-w"))
@@ -179,3 +189,4 @@
   (yank)
 )
 (global-set-key (kbd "C-M-d") 'duplicate-line)
+(put 'dired-find-alternate-file 'disabled nil)
