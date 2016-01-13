@@ -112,6 +112,7 @@
     company-auctex
     company-web
     company-math
+    visible-mark
   )
   "List of packages that must be installed")
 (require 'cl)
