@@ -105,6 +105,9 @@
     dired+
     projectile
     flx-ido
+    ido-ubiquitous
+    ido-yes-or-no
+    smex
     company
     company-auctex
     company-web
@@ -183,6 +186,21 @@
 (flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+;; ido-ubiquitous
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+;; ido-yes-or-no
+(require 'ido-yes-or-no)
+(ido-yes-or-no-mode 1)
+
+;; smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; projectile
 (require 'projectile)
