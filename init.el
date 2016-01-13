@@ -47,9 +47,7 @@
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
 
-;; Line numbering
-(global-linum-mode t)
-(setq linum-format "%4d \u2502 ")
+
 
 ;; Backups
 (setq backup-directory-alist
@@ -95,10 +93,15 @@
 ;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
 (defvar required-packages
   '(auctex
+    ac-math
+    auto-complete-auctex
     neotree
     magit
     smooth-scrolling
+    yasnippet
     js2-mode
+    auto-complete
+    ac-js2
     web-mode
     smart-mode-line
     dired+
@@ -159,8 +162,36 @@
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
 
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; auto-complete
+(require 'auto-complete)
+(require 'auto-complete-config)
+(require 'ac-math)
+(require 'auto-complete-auctex)
+(setq ac-dwim t)
+(ac-config-default)
+(add-to-list 'ac-modes 'latex-mode)
+(defun ac-LaTeX-mode-setup () ; add ac-sources to default ac-sources
+  (setq ac-sources
+        (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+                ac-sources))
+  )
+(add-hook 'LaTeX-mode-hook 'ac-LaTeX-mode-setup)
+(global-auto-complete-mode t)
+(setq ac-math-unicode-in-math-p t)
 
 ;; Miscellaneous configuration
+
+;; Line numbering
+(require 'linum)
+(add-hook 'prog-mode-hook 'linum-on)
+(require 'tex)
+(add-hook 'LaTeX-mode-hook 'linum-on)
+(setq linum-format "%4d ")
+
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
