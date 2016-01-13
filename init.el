@@ -5,6 +5,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(company-idle-delay 0)
+ '(company-minimum-prefix-length 1)
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(custom-safe-themes
    (quote
@@ -93,18 +95,20 @@
 ;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
 (defvar required-packages
   '(auctex
-    ac-math
-    auto-complete-auctex
     neotree
     magit
     smooth-scrolling
     yasnippet
     js2-mode
-    auto-complete
-    ac-js2
     web-mode
     smart-mode-line
     dired+
+    projectile
+    flx-ido
+    company
+    company-auctex
+    company-web
+    company-math
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -134,6 +138,7 @@
 (require 'neotree)
 (setq neo-smart-open t)
 (global-set-key (kbd "C-Q") 'neotree-toggle)
+(setq neo-vc-integration nil)
 
 
 
@@ -161,27 +166,29 @@
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
+(define-key dired-mode-map [mouse-2] 'diredp-mouse-find-file-reuse-dir-buffer)
 
 ;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; auto-complete
-(require 'auto-complete)
-(require 'auto-complete-config)
-(require 'ac-math)
-(require 'auto-complete-auctex)
-(setq ac-dwim t)
-(ac-config-default)
-(add-to-list 'ac-modes 'latex-mode)
-(defun ac-LaTeX-mode-setup () ; add ac-sources to default ac-sources
-  (setq ac-sources
-        (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-                ac-sources))
-  )
-(add-hook 'LaTeX-mode-hook 'ac-LaTeX-mode-setup)
-(global-auto-complete-mode t)
-(setq ac-math-unicode-in-math-p t)
+;; company-mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; flx-ido
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+
+;; projectile
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-mode-line "Projectile")
+
 
 ;; Miscellaneous configuration
 
@@ -205,8 +212,6 @@
 (tool-bar-mode -1)
 
 ;; Custom functions and keybindings
-(global-unset-key (kbd "C-w"))
-(global-set-key (kbd "C-w") 'backward-kill-word)
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
 (global-set-key [(control z)] 'undo)
