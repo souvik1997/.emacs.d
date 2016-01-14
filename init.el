@@ -74,7 +74,7 @@
 
 ;; PATH, dired, and exec-path configuration
 ;; Must be before package installation or certain commands like gzip won't be found
-(setq insert-directory-program "/usr/local/bin/gls")
+(if (eq system-type "darwin") (setq insert-directory-program "/usr/local/bin/gls"))
 (setq dired-listing-switches "-aBhl --group-directories-first")
 (getenv "PATH")
  (setenv "PATH"
