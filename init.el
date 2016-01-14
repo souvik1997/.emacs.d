@@ -227,13 +227,13 @@
 
 ;; CEDET
 (if (eq system-type "darwin")
-    (progn (setq company-backends (delete 'company-semantic company-backends))
-           (progn (global-ede-mode 1)
-                  (semantic-mode 1)
-                  (global-semantic-idle-completions-mode t)
-                  (global-semantic-decoration-mode t)
-                  (global-semantic-highlight-func-mode t)
-                  (global-semantic-show-unmatched-syntax-mode t))))
+    (progn (setq company-backends (delete 'company-semantic company-backends)))
+  (progn (global-ede-mode 1)
+         (semantic-mode 1)
+         (global-semantic-idle-completions-mode t)
+         (global-semantic-decoration-mode t)
+         (global-semantic-highlight-func-mode t)
+         (global-semantic-show-unmatched-syntax-mode t)))
 
 
 
