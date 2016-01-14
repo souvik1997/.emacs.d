@@ -113,6 +113,7 @@
     company-web
     company-math
     visible-mark
+    markdown-mode
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -208,6 +209,9 @@
 (projectile-global-mode)
 (setq projectile-mode-line "Projectile")
 
+;; markdown-mode
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; Miscellaneous configuration
 
