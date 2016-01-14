@@ -28,7 +28,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; Mouse configuration
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6))) 
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6)))
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
@@ -142,7 +142,7 @@
 ;; Neotree
 (require 'neotree)
 (setq neo-smart-open t)
-(global-set-key (kbd "C-Q") 'neotree-toggle)
+(global-set-key (kbd "C-x C-a") 'neotree-toggle)
 (setq neo-vc-integration nil)
 
 
@@ -253,6 +253,9 @@
 (toggle-scroll-bar -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+;; I use C-q for tmux
+(global-unset-key (kbd "C-q"))
 
 ;; Custom functions and keybindings
 (global-unset-key [(control z)])
