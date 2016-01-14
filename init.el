@@ -73,7 +73,7 @@
 
 ;; PATH, dired, and exec-path configuration
 ;; Must be before package installation or certain commands like gzip won't be found
-(if (eq system-type "darwin") (setq insert-directory-program "/usr/local/bin/gls"))
+(if (eq system-type 'darwin) (setq insert-directory-program "/usr/local/bin/gls"))
 (setq dired-listing-switches "-aBhl --group-directories-first")
 (getenv "PATH")
  (setenv "PATH"
@@ -226,7 +226,7 @@
   (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
 
 ;; CEDET
-(if (eq system-type "darwin")
+(if (eq system-type 'darwin)
     (progn (setq company-backends (delete 'company-semantic company-backends)))
   (progn (global-ede-mode 1)
          (semantic-mode 1)
