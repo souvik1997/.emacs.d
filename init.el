@@ -14,7 +14,6 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(semantic-mode t)
  '(send-mail-function (quote sendmail-send-it))
  '(user-mail-address "souvik1997@gmail.com"))
 (custom-set-faces
@@ -227,10 +226,15 @@
   (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
 
 ;; CEDET
-(global-semantic-idle-completions-mode t)
-(global-semantic-decoration-mode t)
-(global-semantic-highlight-func-mode t)
-(global-semantic-show-unmatched-syntax-mode t)
+(if (eq system-type "darwin")
+    (progn (setq company-backends (delete 'company-semantic company-backends))
+           (progn (global-ede-mode 1)
+                  (semantic-mode 1)
+                  (global-semantic-idle-completions-mode t)
+                  (global-semantic-decoration-mode t)
+                  (global-semantic-highlight-func-mode t)
+                  (global-semantic-show-unmatched-syntax-mode t))))
+
 
 
 (require 'cc-mode)
