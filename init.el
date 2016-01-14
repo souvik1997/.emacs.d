@@ -226,6 +226,13 @@
   (other-window 1)
   (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
 
+;; CEDET
+(global-semantic-idle-completions-mode t)
+(global-semantic-decoration-mode t)
+(global-semantic-highlight-func-mode t)
+(global-semantic-show-unmatched-syntax-mode t)
+
+
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
