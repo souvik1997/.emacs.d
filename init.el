@@ -97,6 +97,7 @@
   '(auctex
     neotree
     magit
+    smooth-scrolling
     yasnippet
     js2-mode
     web-mode
@@ -107,6 +108,10 @@
     ido-ubiquitous
     ido-yes-or-no
     smex
+    company
+    company-auctex
+    company-web
+    company-math
     visible-mark
   )
   "List of packages that must be installed")
@@ -139,6 +144,11 @@
 (global-set-key (kbd "C-Q") 'neotree-toggle)
 (setq neo-vc-integration nil)
 
+
+
+;; Smooth-scrolling
+(require 'smooth-scrolling)
+
 ;; js2-mode
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook 'ac2-js2-mode)
@@ -165,6 +175,10 @@
 ;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+
+;; company-mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; flx-ido
 (require 'flx-ido)
