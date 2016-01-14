@@ -239,7 +239,8 @@
          (global-semantic-highlight-func-mode t)
          (global-semantic-show-unmatched-syntax-mode t)))
 
-
+;; Delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
