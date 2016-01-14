@@ -219,6 +219,13 @@
 (add-hook 'LaTeX-mode-hook 'linum-on)
 (setq linum-format "%4d ")
 
+;; gdb
+(defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
+  ad-do-it
+  (split-window-horizontally)
+  (other-window 1)
+  (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
+
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
