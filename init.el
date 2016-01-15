@@ -148,7 +148,7 @@
 ;; Neotree
 (require 'neotree)
 (setq neo-smart-open t)
-(global-set-key (kbd "C-x C-a") 'neotree-toggle)
+(global-set-key (kbd "C-c C-k") 'neotree-toggle)
 (setq neo-vc-integration nil)
 
 
