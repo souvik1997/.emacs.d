@@ -29,7 +29,8 @@
  '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
  '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
-
+(require 'server)
+(unless (server-running-p) (server-start))
 
 (setq ring-bell-function 'ignore)
 
@@ -84,8 +85,9 @@
 (getenv "PATH")
  (setenv "PATH"
 (concat
- "/Library/TeX/texbin" ":" "/usr/local/bin/" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin"
+ "/Library/TeX/texbin" ":" "/usr/local/bin/" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin" ":" "/usr/bin/" ":"
 (getenv "PATH")))
+(add-to-list 'exec-path "/usr/bin/")
 (add-to-list 'exec-path "/Library/TeX/texbin")
 (add-to-list 'exec-path  "/usr/local/bin")
 (add-to-list 'exec-path "/usr/local/MacGPG2/bin")
