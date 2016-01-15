@@ -5,6 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(company-begin-commands
+   (quote
+    (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
  '(company-global-modes (quote (not gud-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
@@ -14,6 +17,7 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js2-idle-timer-delay 2)
  '(projectile-keymap-prefix "p")
  '(send-mail-function (quote sendmail-send-it))
  '(user-mail-address "souvik1997@gmail.com"))
