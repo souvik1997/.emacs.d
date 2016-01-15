@@ -256,9 +256,10 @@
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
 (setq mac-pass-command-to-system nil)
-(toggle-scroll-bar -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
+(if (display-graphic-p) (progn
+                          (toggle-scroll-bar -1)
+                          (scroll-bar-mode -1)
+                          (tool-bar-mode -1)))
 
 ;; I use C-q for tmux
 (global-unset-key (kbd "C-q"))
