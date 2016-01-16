@@ -263,6 +263,8 @@
       (message "Opening file...")
     (message "Aborting")))
 
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
