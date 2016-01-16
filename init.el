@@ -14,7 +14,7 @@
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
@@ -22,12 +22,16 @@
  '(js2-idle-timer-delay 2)
  '(projectile-keymap-prefix "p")
  '(send-mail-function (quote sendmail-send-it))
+ '(sml/read-only-char "RO")
+ '(sml/theme (quote respectful))
  '(user-mail-address "souvik1997@gmail.com"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(mode-line ((t (:background "black" :foreground "dark cyan" :inverse-video nil :box nil :height 1.1 :family "DejaVu Mono"))))
+ '(sml/position-percentage ((t (:weight normal :family "Mono"))))
  '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
  '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
@@ -108,7 +112,6 @@
     neotree
     magit
     smooth-scrolling
-    yasnippet
     js2-mode
     web-mode
     smart-mode-line
@@ -182,10 +185,6 @@
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
 (define-key dired-mode-map [mouse-2] 'diredp-mouse-find-file-reuse-dir-buffer)
-
-;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
 
 ;; company-mode
 (require 'company)
