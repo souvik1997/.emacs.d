@@ -25,6 +25,9 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-idle-timer-delay 2)
+ '(package-selected-packages
+   (quote
+    (misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
@@ -38,7 +41,7 @@
  '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
  '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
-(package-initialize)
+(package-install-selected-packages)
 (require 'server)
 (unless (server-running-p) (server-start))
 
@@ -103,45 +106,6 @@
 (add-to-list 'exec-path "/usr/local/MacGPG2/bin")
 (add-to-list 'exec-path "/usr/local/opt/coreutils/libexec/gnubin")
 
-
-;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
-(defvar required-packages
-  '(auctex
-    anzu
-    neotree
-    magit
-    smooth-scrolling
-    js2-mode
-    web-mode
-    dired+
-    projectile
-    flx-ido
-    ido-ubiquitous
-    ido-yes-or-no
-    smex
-    company
-    company-auctex
-    company-web
-    company-math
-    visible-mark
-    markdown-mode
-    flycheck
-    spacemacs-theme
-    spaceline
-  )
-  "List of packages that must be installed")
-(require 'cl)
-(defun packages-installed-p ()
-  (loop for p in required-packages
-	when (not (package-installed-p p)) do (return nil)
-	finally (return t)))
-(unless (packages-installed-p)
-  (message "%s" "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  (dolist (p required-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
 
 
 
