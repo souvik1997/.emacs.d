@@ -5,6 +5,8 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 (package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
