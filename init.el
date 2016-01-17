@@ -100,9 +100,10 @@
  (setenv "PATH"
 (concat
  "/Library/TeX/texbin" ":" "/usr/local/bin/" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin" ":" "/usr/bin/" ":" "~/.local/bin" ":"
-(getenv "PATH")))
-(exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-env "PYTHONPATH")
+ (getenv "PATH")))
+(if (eq system-type 'darwin) (progn
+                               (exec-path-from-shell-initialize)
+                               (exec-path-from-shell-copy-env "PYTHONPATH")))
 
 
 ;; elpy
