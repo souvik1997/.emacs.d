@@ -147,6 +147,7 @@
 (require 'spaceline-config)
 ;; Fix broken separators on OS X
 (setq ns-use-srgb-colorspace nil)
+(setq spaceline-minor-modes-separator " ")
 (spaceline-spacemacs-theme)
 
 ;; dired+
