@@ -1,3 +1,10 @@
+;; Package-specific configuration
+;; Package archives
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -11,30 +18,30 @@
  '(company-global-modes (quote (not gud-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
- '(custom-enabled-themes (quote (tsdh-dark)))
- '(custom-safe-themes
-   (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(custom-enabled-themes (quote (spacemacs-dark)))
+ '(custom-safe-themes t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-idle-timer-delay 2)
+ '(package-selected-packages
+   (quote
+    (spaceline spacemacs-theme markdown-mode visible-mark company-math company-web company-auctex company smex ido-yes-or-no ido-ubiquitous flx-ido projectile dired+ web-mode js2-mode smooth-scrolling magit neotree auctex)))
+ '(powerline-default-separator (quote wave))
+ '(powerline-height 23)
  '(projectile-keymap-prefix "p")
  '(send-mail-function (quote sendmail-send-it))
- '(sml/read-only-char "RO")
- '(sml/theme (quote respectful))
  '(user-mail-address "souvik1997@gmail.com"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "black" :foreground "dark cyan" :inverse-video nil :box nil :height 1.1 :family "DejaVu Mono"))))
- '(sml/position-percentage ((t (:weight normal :family "Mono"))))
  '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
  '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
+(package-initialize)
 (require 'server)
 (unless (server-running-p) (server-start))
 
@@ -100,12 +107,6 @@
 (add-to-list 'exec-path "/usr/local/opt/coreutils/libexec/gnubin")
 
 
-;; Package-specific configuration
-;; Package archives
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
 ;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
 (defvar required-packages
   '(auctex
@@ -114,7 +115,6 @@
     smooth-scrolling
     js2-mode
     web-mode
-    smart-mode-line
     dired+
     projectile
     flx-ido
@@ -127,6 +127,8 @@
     company-math
     visible-mark
     markdown-mode
+    spacemacs-theme
+    spaceline
   )
   "List of packages that must be installed")
 (require 'cl)
@@ -178,8 +180,11 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-;; smart-mode-line
-(sml/setup)
+;; spaceline
+(require 'spaceline-config)
+;; Fix broken separators on OS X
+(setq ns-use-srgb-colorspace nil)
+(spaceline-spacemacs-theme)
 
 ;; dired+
 (require 'dired+)
