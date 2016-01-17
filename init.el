@@ -25,9 +25,6 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-idle-timer-delay 2)
- '(package-selected-packages
-   (quote
-    (spaceline spacemacs-theme markdown-mode visible-mark company-math company-web company-auctex company smex ido-yes-or-no ido-ubiquitous flx-ido projectile dired+ web-mode js2-mode smooth-scrolling magit neotree auctex)))
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
@@ -110,6 +107,7 @@
 ;; From http://y.tsutsumi.io/emacs-from-scratch-part-2-package-management.html
 (defvar required-packages
   '(auctex
+    anzu
     neotree
     magit
     smooth-scrolling
@@ -127,6 +125,7 @@
     company-math
     visible-mark
     markdown-mode
+    flycheck
     spacemacs-theme
     spaceline
   )
@@ -227,6 +226,12 @@
 ;; markdown-mode
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; anzu
+(global-anzu-mode +1)
+
+;; flycheck
+(global-flycheck-mode)
 
 ;; Miscellaneous configuration
 
