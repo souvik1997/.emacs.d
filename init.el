@@ -54,7 +54,7 @@
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6)))
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
+(setq mouse-autoselect-window t)
 
 (unless window-system
   (require 'mouse)
