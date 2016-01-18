@@ -18,13 +18,13 @@
  '(company-begin-commands
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
- '(company-global-modes (quote (not gud-mode)))
+ '(company-global-modes (quote (not gud-mode org-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes t)
  '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-idle-timer-delay 2)
@@ -243,6 +243,12 @@
     (message "Aborting")))
 
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+
+;; Org mode
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
