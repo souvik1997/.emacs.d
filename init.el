@@ -18,16 +18,16 @@
  '(company-begin-commands
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
- '(company-global-modes (quote (not gud-mode)))
+ '(company-global-modes (quote (not gud-mode org-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes t)
  '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(js2-idle-timer-delay 2)
+ '(js2-idle-timer-delay 1)
  '(package-selected-packages
    (quote
     (exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
@@ -243,6 +243,12 @@
     (message "Aborting")))
 
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+
+;; Org mode
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
