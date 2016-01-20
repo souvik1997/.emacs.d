@@ -15,6 +15,13 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(c-basic-offset 2)
+ '(c-default-style
+   (quote
+    ((c-mode . "ellemtel")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(company-begin-commands
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
