@@ -40,7 +40,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
@@ -130,6 +130,11 @@
 (setq TeX-parse-self t)
 (setq preview-gs-command "/usr/local/bin/gs")
 (setq LaTeX-item-indent 0)
+
+;; AUCTeX-Latexmk
+(require 'auctex-latexmk)
+(auctex-latexmk-setup)
+(setq auctex-latexmk-inherit-TeX-PDF-mode t)
 
 ;; Neotree
 (require 'neotree)
