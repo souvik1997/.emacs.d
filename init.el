@@ -67,19 +67,24 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
+(require 'mouse)
+(xterm-mouse-mode 1)
+(global-set-key [mouse-4] '(lambda ()
+                             (interactive)
+                             (scroll-down 1)))
+(global-set-key [mouse-5] '(lambda ()
+                             (interactive)
+                             (scroll-up 1)))
+(xterm-mouse-mode t)
+(defun track-mouse (e))
+(setq mouse-sel-mode t)
 
-(unless window-system
-  (require 'mouse)
-  (xterm-mouse-mode 1)
-  (global-set-key [mouse-4] '(lambda ()
-			       (interactive)
-			       (scroll-down 1)))
-  (global-set-key [mouse-5] '(lambda ()
-			       (interactive)
-			       (scroll-up 1)))
-  (xterm-mouse-mode t)
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t))
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+        (lambda (frame)
+            (with-selected-frame frame
+                (load-theme (nth 0 custom-enabled-themes) t))))
+  (load-theme (nth 0 custom-enabled-themes) t))
 
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
