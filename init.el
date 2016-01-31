@@ -79,13 +79,6 @@
 (defun track-mouse (e))
 (setq mouse-sel-mode t)
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-        (lambda (frame)
-            (with-selected-frame frame
-                (load-theme (nth 0 custom-enabled-themes) t))))
-  (load-theme (nth 0 custom-enabled-themes) t))
-
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
 
