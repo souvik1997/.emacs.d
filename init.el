@@ -30,7 +30,7 @@
  '(company-global-modes (quote (not gud-mode org-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (tsdh-dark)))
  '(custom-safe-themes t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
