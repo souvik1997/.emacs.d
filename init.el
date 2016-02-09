@@ -31,7 +31,7 @@
  '(company-global-modes (quote (not gud-mode org-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
@@ -47,7 +47,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
