@@ -47,7 +47,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
@@ -243,6 +243,10 @@
 
 ;; flycheck
 (global-flycheck-mode)
+
+;; switch-window
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ;; Miscellaneous configuration
 
