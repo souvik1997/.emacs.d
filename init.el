@@ -29,7 +29,7 @@
  '(company-begin-commands
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
- '(company-global-modes (quote (not gud-mode org-mode)))
+ '(company-global-modes (quote (not gud-mode org-mode erc-mode eshell-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(custom-enabled-themes (quote (monokai)))
@@ -37,6 +37,9 @@
  '(display-time-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
+ '(erc-nick "SouvikB")
+ '(erc-nick-uniquifier "_")
+ '(erc-server "")
  '(fci-rule-color "#383838")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -53,6 +56,10 @@
  '(powerline-default-separator (quote wave))
  '(powerline-height 23)
  '(projectile-keymap-prefix "p")
+ '(rcirc-default-full-name "SouvikB")
+ '(rcirc-default-nick "SouvikB")
+ '(rcirc-default-user-name "SouvikB")
+ '(rcirc-server-alist nil)
  '(send-mail-function (quote sendmail-send-it))
  '(user-mail-address "souvik1997@gmail.com")
  '(vc-annotate-background "#2B2B2B")
@@ -113,7 +120,8 @@
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
 
-
+;; tls
+(require 'tls)
 
 ;; Backups
 (setq backup-directory-alist
