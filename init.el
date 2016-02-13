@@ -60,6 +60,7 @@
  '(rcirc-default-nick "SouvikB")
  '(rcirc-default-user-name "SouvikB")
  '(rcirc-server-alist nil)
+ '(require-final-newline (quote visit-save))
  '(send-mail-function (quote sendmail-send-it))
  '(user-mail-address "souvik1997@gmail.com")
  '(vc-annotate-background "#2B2B2B")
