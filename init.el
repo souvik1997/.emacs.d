@@ -52,7 +52,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (systemd haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote bar))
  '(powerline-height 20)
  '(projectile-keymap-prefix "p")
@@ -163,6 +163,9 @@
                                (exec-path-from-shell-initialize)
                                (exec-path-from-shell-copy-env "PYTHONPATH")))
 
+
+;; ranger
+(setq ranger-override-dired t)
 
 ;; elpy
 (elpy-enable)
