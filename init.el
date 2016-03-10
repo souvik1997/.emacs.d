@@ -102,6 +102,10 @@
 
 (setq ring-bell-function 'ignore)
 
+
+;; Midnight-mode
+(require 'midnight)
+
 ;; Mouse configuration
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6)))
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
