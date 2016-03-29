@@ -36,7 +36,7 @@
  '(custom-safe-themes t)
  '(display-time-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain) t)
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(erc-nick "SouvikB")
  '(erc-nick-uniquifier "_")
  '(erc-server "")
@@ -52,7 +52,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(powerline-default-separator (quote bar))
  '(powerline-height 20)
  '(projectile-keymap-prefix "p")
@@ -85,7 +85,8 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(verilog-auto-newline nil))
+ '(verilog-auto-newline nil)
+ '(verilog-indent-level 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -177,6 +178,11 @@
 (eval-after-load "elpy"
   '(cl-dolist (key '("M-<up>" "M-<down>" "M-<left>" "M-<right>"))
      (define-key elpy-mode-map (kbd key) nil)))
+
+;; keyfreq
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
 
 ;; AUCTeX
 ;(load "auctex.el" nil t t)
