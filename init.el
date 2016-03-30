@@ -85,8 +85,14 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
+ '(verilog-align-ifelse t)
+ '(verilog-auto-lineup (quote ignore))
  '(verilog-auto-newline nil)
- '(verilog-indent-level 4))
+ '(verilog-indent-level 4)
+ '(verilog-indent-level-behavioral 4)
+ '(verilog-indent-level-declaration 4)
+ '(verilog-indent-level-directive 4)
+ '(verilog-indent-level-module 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
