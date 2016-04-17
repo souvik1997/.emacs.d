@@ -34,7 +34,7 @@
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (monokai)))
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
  '(custom-safe-themes t)
  '(display-time-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
