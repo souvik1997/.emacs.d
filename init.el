@@ -1,5 +1,6 @@
 ;; Package-specific configuration
 ;; Package archives
+(prefer-coding-system 'utf-8)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
