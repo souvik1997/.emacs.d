@@ -89,6 +89,7 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
+ '(vc-follow-symlinks nil)
  '(verilog-align-ifelse t)
  '(verilog-auto-lineup (quote ignore))
  '(verilog-auto-newline nil)
