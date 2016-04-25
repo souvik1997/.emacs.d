@@ -219,6 +219,7 @@
 
 ;; Smooth-scrolling
 (require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
 
 ;; js2-mode
 (add-hook 'js-mode-hook 'js2-minor-mode)
