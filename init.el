@@ -55,7 +55,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(powerline-default-separator (quote bar))
