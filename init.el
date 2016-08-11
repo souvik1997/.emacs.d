@@ -181,9 +181,9 @@
 (concat
  "." ":" "/Library/TeX/texbin" ":" "/usr/local/bin/" ":" "/usr/local/MacGPG2/bin" ":" "/usr/local/opt/coreutils/libexec/gnubin" ":" "/usr/bin/" ":" "~/.local/bin" ":"
  (getenv "PATH")))
-(if (eq system-type 'darwin) (progn
-                               (exec-path-from-shell-initialize)
-                               (exec-path-from-shell-copy-env "PYTHONPATH")))
+(if (and (eq system-type 'darwin) (not (eq (getenv "PYTHONPATH") nil))) (progn
+                                                                          (exec-path-from-shell-initialize)
+                                                                          (exec-path-from-shell-copy-env "PYTHONPATH")))
 
 
 ;; ranger
