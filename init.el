@@ -327,6 +327,8 @@
   (other-window 1)
   (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
 
+(load-file "l.el")
+
 ;; CEDET
 (if (eq system-type 'darwin)
     (progn (setq company-backends (delete 'company-semantic company-backends)))
