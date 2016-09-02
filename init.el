@@ -327,7 +327,7 @@
   (other-window 1)
   (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-disassembly-buffer)))
 
-(load-file "l.el")
+(load-file "~/.emacs.d/l.el")
 
 ;; CEDET
 (if (eq system-type 'darwin)
