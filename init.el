@@ -8,7 +8,6 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
-(auto-package-update-at-time "03:00")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -120,6 +119,8 @@
 (unless (server-running-p) (server-start))
 
 (setq ring-bell-function 'ignore)
+
+(auto-package-update-at-time "03:00")
 
 
 ;; windmove
