@@ -16,9 +16,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
+   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+   (vector "#c5c8c6" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#8abeb7" "#373b41"))
  '(asm-comment-char 35)
  '(battery-mode-line-format "%p%% %b ")
  '(c-basic-offset 2)
@@ -45,10 +45,11 @@
  '(erc-nick "SouvikB")
  '(erc-nick-uniquifier "_")
  '(erc-server "")
- '(fci-rule-color "#383838")
+ '(fci-rule-color "#373b41")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-idle-timer-delay 1)
+ '(nlinum-format "%d ")
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
@@ -57,7 +58,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (nlinum auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(powerline-default-separator (quote bar))
@@ -110,8 +111,8 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:background "#222226" :foreground "#b2b2b2" :box nil))))
  '(mode-line-inactive ((t (:background "#292b2e" :foreground "#b2b2b2" :box nil))))
- '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
- '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
+ '(term-color-black ((t (:background "dark gray" :foreground "gray"))) t)
+ '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan"))) t))
 
 (package-install-selected-packages)
 (require 'server)
@@ -316,12 +317,8 @@
 ;; Miscellaneous configuration
 
 ;; Line numbering
-(require 'linum)
-(add-hook 'prog-mode-hook 'linum-on)
-(require 'tex)
-(add-hook 'LaTeX-mode-hook 'linum-on)
-(add-hook 'erlang-mode-hook 'linum-on)
-(setq linum-format "%4d ")
+(require 'nlinum)
+(global-nlinum-mode)
 
 ;; gdb
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
