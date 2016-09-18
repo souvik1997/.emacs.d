@@ -30,6 +30,7 @@
  '(company-begin-commands
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
+ '(company-dabbrev-downcase nil)
  '(company-global-modes (quote (not gud-mode org-mode erc-mode eshell-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
