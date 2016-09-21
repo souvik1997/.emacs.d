@@ -31,7 +31,9 @@
    (quote
     (self-insert-command org-self-insert-command orgtbl-self-insert-command)))
  '(company-dabbrev-downcase nil)
- '(company-global-modes (quote (not gud-mode org-mode erc-mode eshell-mode)))
+ '(company-global-modes
+   (quote
+    (not gud-mode org-mode erc-mode eshell-mode shell-mode)))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(compilation-message-face (quote default))
@@ -57,7 +59,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (better-shell nlinum auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (ssh restclient better-shell nlinum auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(powerline-default-separator (quote bar))
@@ -111,8 +113,8 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:background "#222226" :foreground "#b2b2b2" :box nil))))
  '(mode-line-inactive ((t (:background "#292b2e" :foreground "#b2b2b2" :box nil))))
- '(term-color-black ((t (:background "dark gray" :foreground "gray"))) t)
- '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan"))) t))
+ '(term-color-black ((t (:background "dark gray" :foreground "gray"))))
+ '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
 (package-install-selected-packages)
 (require 'server)
