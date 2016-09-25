@@ -227,6 +227,16 @@
 (global-set-key (kbd "C-c C-k") 'neotree-toggle)
 (setq neo-vc-integration nil)
 
+;; magit binding
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; ido-imenu
+(global-set-key (kbd "C-x C-i") 'imenu)
+
+;; C-return == return
+(global-set-key [C-return] [return])
+
 
 
 ;; Smooth-scrolling
@@ -349,7 +359,7 @@
 (require 'recentf)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 (recentf-mode t)
-(setq recentf-max-saved-items 15)
+(setq recentf-max-saved-items 100)
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
