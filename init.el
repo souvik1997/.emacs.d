@@ -149,6 +149,17 @@
 (defun track-mouse (e))
 (setq mouse-sel-mode t)
 
+
+;; term mode
+(defun disable-nlinum-mode ()
+  (add-hook 'after-change-major-mode-hook
+            (lambda () (nlinum-mode 0))
+            :append :local))
+
+(add-hook 'term-mode-hook 'disable-nlinum-mode)
+
+
+
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
 
