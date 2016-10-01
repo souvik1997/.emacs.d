@@ -43,6 +43,7 @@
  '(display-time-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(enable-remote-dir-locals t)
  '(erc-nick "SouvikB")
  '(erc-nick-uniquifier "_")
  '(erc-server "")
