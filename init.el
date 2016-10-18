@@ -60,7 +60,7 @@
  '(org-support-shift-select (quote always))
  '(package-selected-packages
    (quote
-    (flycheck-irony company-irony company-irony-c-headers irony ssh restclient better-shell nlinum auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
+    (use-package flycheck-irony company-irony company-irony-c-headers irony ssh restclient better-shell nlinum auto-package-update bison-mode intero flycheck-elixir alchemist elixir-mode php-mode edts scratch ensime scala-mode wolfram-mode color-theme-sanityinc-tomorrow llvm-mode keyfreq erlang slime-company slime geiser py-autopep8 gitignore-mode nodejs-repl ghc x86-lookup info+ ranger haskell-mode ag isearch-prop flx-isearch isearch+ 2048-game browse-kill-ring+ easy-kill-extras easy-kill ein switch-window monokai-theme auctex-latexmk srefactor exec-path-from-shell elpy misc-cmds company auctex web-mode visible-mark spacemacs-theme spaceline smooth-scrolling smex projectile neotree markdown-mode magit js2-mode ido-yes-or-no ido-ubiquitous flycheck flx-ido dired+ company-web company-math company-auctex anzu)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(powerline-default-separator (quote bar))
@@ -118,8 +118,9 @@
  '(term-color-blue ((t (:background "deep sky blue" :foreground "cyan")))))
 
 (package-install-selected-packages)
-(require 'server)
-(unless (server-running-p) (server-start))
+(use-package 'server
+  :config
+  (unless (server-running-p) (server-start)))
 
 (setq ring-bell-function 'ignore)
 
@@ -130,24 +131,25 @@
 (windmove-default-keybindings 'super)
 
 ;; Midnight-mode
-(require 'midnight)
+(use-package 'midnight)
 
 ;; Mouse configuration
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 0.6)))
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-(require 'mouse)
-(xterm-mouse-mode 1)
-(global-set-key [mouse-4] '(lambda ()
-                             (interactive)
-                             (scroll-down 1)))
-(global-set-key [mouse-5] '(lambda ()
-                             (interactive)
-                             (scroll-up 1)))
-(xterm-mouse-mode t)
-(defun track-mouse (e))
-(setq mouse-sel-mode t)
+(use-package 'mouse
+  :config
+  (xterm-mouse-mode 1)
+  (global-set-key [mouse-4] '(lambda ()
+                               (interactive)
+                               (scroll-down 1)))
+  (global-set-key [mouse-5] '(lambda ()
+                               (interactive)
+                               (scroll-up 1)))
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
 
 
 ;; term mode
@@ -164,7 +166,7 @@
 (setq tramp-default-method "ssh")
 
 ;; tls
-(require 'tls)
+(use-package 'tls)
 
 ;; Backups
 (setq backup-directory-alist
@@ -216,9 +218,10 @@
      (define-key elpy-mode-map (kbd key) nil)))
 
 ;; keyfreq
-(require 'keyfreq)
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
+(use-package 'keyfreq
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
 
 ;; AUCTeX
 ;(load "auctex.el" nil t t)
@@ -229,19 +232,22 @@
 (setq LaTeX-item-indent 0)
 
 ;; AUCTeX-Latexmk
-(require 'auctex-latexmk)
-(auctex-latexmk-setup)
-(setq auctex-latexmk-inherit-TeX-PDF-mode t)
+(use-package 'auctex-latexmk
+  :config
+  (auctex-latexmk-setup)
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t))
 
 ;; Neotree
-(require 'neotree)
-(setq neo-smart-open t)
-(global-set-key (kbd "C-c C-k") 'neotree-toggle)
-(setq neo-vc-integration nil)
+(use-package 'neotree
+  :config
+  (setq neo-smart-open t)
+  (global-set-key (kbd "C-c C-k") 'neotree-toggle)
+  (setq neo-vc-integration nil))
 
 ;; magit binding
-(require 'magit)
-(global-set-key (kbd "C-x g") 'magit-status)
+(use-package 'magit
+  :config
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; ido-imenu
 (global-set-key (kbd "C-x C-i") 'imenu)
@@ -252,7 +258,7 @@
 
 
 ;; Smooth-scrolling
-(require 'smooth-scrolling)
+(use-package 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 
 ;; intero
@@ -270,27 +276,27 @@
     (set-variable 'indent-tabs-mode nil))))
 
 ;; web-mode
-(require 'web-mode)
+(use-package 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; spaceline
-(require 'spaceline-config)
+(use-package 'spaceline-config)
 ;; Fix broken separators on OS X
 (setq ns-use-srgb-colorspace nil)
 (setq spaceline-minor-modes-separator " ")
 (spaceline-spacemacs-theme)
 
 ;; dired+
-(require 'dired+)
+(use-package 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
 (define-key dired-mode-map [mouse-2] 'diredp-mouse-find-file-reuse-dir-buffer)
 
 ;; company-mode
-(require 'company)
+(use-package 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; flx-ido
-(require 'flx-ido)
+(use-package 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
@@ -298,28 +304,28 @@
 (setq ido-use-faces nil)
 
 ;; ido-ubiquitous
-(require 'ido-ubiquitous)
+(use-package 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
 ;; ido-yes-or-no
-(require 'ido-yes-or-no)
+(use-package 'ido-yes-or-no)
 (ido-yes-or-no-mode 1)
 
 ;; smex
-(require 'smex)
+(use-package 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; projectile
-(require 'projectile)
+(use-package 'projectile)
 (setq projectile-mode-line "Projectile")
 ;(setq projectile-keymap-prefix (kbd "C-x p"))
 (projectile-global-mode)
 
 ;; markdown-mode
-(require 'markdown-mode)
+(use-package 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; anzu
@@ -329,21 +335,21 @@
 (global-flycheck-mode)
 
 ;; switch-window
-(require 'switch-window)
+(use-package 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
 
 ;; browse-kill-ring+
-(require 'browse-kill-ring)
+(use-package 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
 
 ;; easy-kill
-(require 'easy-kill)
+(use-package 'easy-kill)
 (global-set-key [remap kill-ring-save] 'easy-kill)
 
 ;; Miscellaneous configuration
 
 ;; Line numbering
-(require 'nlinum)
+(use-package 'nlinum)
 (global-nlinum-mode)
 
 ;; gdb
@@ -366,7 +372,7 @@
 ;; Delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(require 'recentf)
+(use-package 'recentf)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 (recentf-mode t)
 (setq recentf-max-saved-items 100)
@@ -380,17 +386,17 @@
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; Org mode
-(require 'org)
+(use-package 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
 ;; ensime
 
-(require 'ensime)
+(use-package 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(require 'cc-mode)
+(use-package 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (electric-pair-mode 1)
 (setq show-paren-delay 0)
